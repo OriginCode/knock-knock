@@ -28,6 +28,6 @@ async fn main() -> Result<()> {
     loop {
         notifiers.update(listener.update().await?).await?;
 
-        sleep(Duration::from_secs(60)).await;
+        sleep(Duration::from_secs(config.sched_secs)).await;
     }
 }

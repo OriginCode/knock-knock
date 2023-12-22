@@ -1,5 +1,3 @@
-use std::collections::HashMap;
-
 use anyhow::Result;
 use async_trait::async_trait;
 
@@ -28,11 +26,11 @@ pub(crate) trait NotifierTrait {
 
 pub(crate) struct Notifiers {
     notifiers: Vec<Box<dyn NotifierTrait>>,
-    states: HashMap<String, State>,
+    states: Vec<(String, State)>,
 }
 
 impl Notifiers {
-    pub(crate) fn init(config: &Config, init_states: HashMap<String, State>) -> Self {
+    pub(crate) fn init(config: &Config, init_states: Vec<(String, State)>) -> Self {
         Self {
             notifiers: vec![Box::new(Telegram::init(config))],
             states: init_states,

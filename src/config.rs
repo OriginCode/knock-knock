@@ -6,6 +6,7 @@ use std::{collections::HashMap, fs, path::Path};
 pub(crate) struct Config {
     pub(crate) listening: HashMap<String, String>,
     pub(crate) notifier: NotifierConfig,
+    pub(crate) sched_secs: u64,
 }
 
 #[derive(Deserialize, Serialize, Debug)]
